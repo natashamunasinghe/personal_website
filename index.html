@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natasha Munasinghe - AI-Native Product Leader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1f3a;
+            --electric: #0EA5E9;
+            --coral: #ff6b6b;
+            --mint: #51cf66;
+            --amber: #ffd43b;
+            --cream: #fef9f3;
+            --text: #2d3748;
+            --text-light: #718096;
+            --gradient-1: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Playful animated background */
+        .background-shapes {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float-random 25s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--gradient-2);
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-3);
+            border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+            top: 50%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float-random {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translate(50px, -80px) rotate(120deg) scale(1.1);
+            }
+            66% { 
+                transform: translate(-30px, 60px) rotate(240deg) scale(0.9);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(254, 249, 243, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 2px solid rgba(79, 70, 229, 0.1);
+        }
+
+        nav .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--electric);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2.5rem 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content h1 .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.1em;
+        }
+
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.2em;
+            left: 0;
+            right: 0;
+            height: 0.3em;
+            background: var(--amber);
+            opacity: 0.3;
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            padding: 0.6rem 1.3rem;
+            background: white;
+            border: 2px solid var(--electric);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--electric);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge::before {
+            content: '✦';
+            font-size: 1.1rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: float-card 4s ease-in-out infinite;
+        }
+
+        .card-1 {
+            top: 0;
+            right: 0;
+            width: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            animation-delay: 0s;
+        }
+
+        .card-2 {
+            bottom: 80px;
+            left: 0;
+            width: 260px;
+            animation-delay: 1.5s;
+        }
+
+        .card-3 {
+            top: 200px;
+            right: 40px;
+            width: 220px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            animation-delay: 3s;
+        }
+
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: 'liga';
+        }
+
+        .card-icon .material-icons,
+        .philosophy-icon .material-icons,
+        .education-icon .material-icons,
+        .community-icon .material-icons {
+            font-size: inherit;
+        }
+
+        .card-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: 2px solid var(--electric);
+            border-radius: 50px;
+            color: var(--electric);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        #philosophy {
+            background: white;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 3px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .philosophy-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .philosophy-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 200px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--electric) 0%, transparent 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-date {
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .timeline-date .year {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--electric);
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px var(--cream);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--electric);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-content li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--cream);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 240px;
+            background: var(--gradient-1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: var(--gradient-2);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: var(--gradient-3);
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="2" fill="white" opacity="0.3"/><circle cx="30" cy="25" r="2" fill="white" opacity="0.3"/><circle cx="50" cy="15" r="2" fill="white" opacity="0.3"/><circle cx="70" cy="30" r="2" fill="white" opacity="0.3"/><circle cx="20" cy="45" r="2" fill="white" opacity="0.3"/><circle cx="60" cy="50" r="2" fill="white" opacity="0.3"/><circle cx="40" cy="60" r="2" fill="white" opacity="0.3"/><circle cx="80" cy="65" r="2" fill="white" opacity="0.3"/></svg>');
+            background-size: 100px 100px;
+        }
+
+        .screenshot-showcase {
+            height: 240px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-showcase img {
+            height: 100%;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            object-fit: contain;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            padding: 0.4rem 1rem;
+            background: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--electric);
+        }
+
+        .project-content h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-impact {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--mint);
+        }
+
+        .project-impact strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Community Section */
+        #community {
+            background: var(--cream);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .community-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .community-card:hover {
+            border-color: var(--coral);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .community-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .community-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .community-org {
+            color: var(--coral);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .community-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Education Section */
+        #education {
+            background: white;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: var(--electric);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: var(--electric);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .education-year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--primary);
+            color: white;
+        }
+
+        #contact .section-label {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: white;
+        }
+
+        input, textarea {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--electric);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.3rem;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-alternatives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--amber);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1419;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--electric);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .timeline-item::after {
+                display: none;
+            }
+
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+            }
+
+            .timeline-content::before {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            nav .container {
+                padding: 1rem 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            nav ul {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .floating-card {
+                padding: 1rem;
+            }
+
+            .card-1, .card-2, .card-3 {
+                width: 200px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .projects-grid, .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-tags {
+                gap: 0.3rem;
+            }
+
+            .project-tag {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-visual {
+                display: none;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .screenshot-showcase {
+                flex-direction: column;
+                height: auto;
+                padding: 0.5rem;
+            }
+
+            .screenshot-showcase img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Natasha Munasinghe</div>
+            <ul>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Building <span class="highlight">learning products</span> that change lives</h1>
+                <div class="tagline">Head of Product | EdTech & Innovation Leader</div>
+                <p class="hero-description">
+                    From leading award-winning programs recognized globally to driving digital innovation 
+                    at Reading Is Fundamental, I build and scale high-impact educational products through 
+                    research-aligned strategy, operational excellence, and cross-functional leadership.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge">EdTech Strategy</span>
+                    <span class="badge">Digital Products</span>
+                    <span class="badge">Learning Innovation</span>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">See My Work ✨</a>
+                    <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-icon"><span class="material-icons">menu_book</span></div>
+                    <div class="card-title">Learning At Scale</div>
+                    <div class="card-text">25M+ children reached through Reading Is Fundamental products</div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon"><span class="material-icons">emoji_events</span></div>
+                    <div class="card-title">Multi Award Winning</div>
+                    <div class="card-text">Australian Financial Review Excellence • Apple Editors' Choice • App of the Day (US & Canada) • Apps We Love • PIEoneer Innovation Award</div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon"><span class="material-icons">public</span></div>
+                    <div class="card-title">Global Impact</div>
+                    <div class="card-text">Australia • USA • India • UAE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How I Work</span>
+                <h2 class="section-title">My Product Philosophy</h2>
+                <p class="section-subtitle">
+                    Rolling up my sleeves to solve interesting problems with teams who care
+                </p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">track_changes</span></div>
+                    <h3>Start with Why</h3>
+                    <p>Every feature begins with understanding the real problem. I work closely with users—students, 
+                    teachers, parents, consumers—to ensure we're building what truly matters, not just what's technically possible.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">handshake</span></div>
+                    <h3>Bridge Builder</h3>
+                    <p>Product managers are translators between technical and non-technical teams. My background 
+                    in law, full-stack development, and education lets me speak everyone's language and bring 
+                    diverse stakeholders together.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">analytics</span></div>
+                    <h3>Data-Informed, User-Driven</h3>
+                    <p>I love numbers. I combine quantitative metrics with qualitative insights—user 
+                    interviews, feedback sessions, real classroom observations—to make decisions that actually improve lives.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">rocket_launch</span></div>
+                    <h3>Ship & Iterate</h3>
+                    <p>Perfect is the enemy of good. I believe in launching thoughtfully, gathering feedback quickly, 
+                    and continuously improving. The best insights come from real users in real situations.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">language</span></div>
+                    <h3>Scale with Purpose</h3>
+                    <p>Technology should democratize access, not gatekeep it. I design products that can scale globally 
+                    while remaining deeply relevant to local communities and individual learners.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon"><span class="material-icons">engineering</span></div>
+                    <h3>Roll Up My Sleeves</h3>
+                    <p>I'm not afraid to get hands-on—whether that's writing code, facilitating workshops, or 
+                    managing stakeholder meetings. Supporting scaling organizations means doing what needs to be done.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Case Studies</span>
+                <h2 class="section-title">Products That Made Real Impact</h2>
+                <p class="section-subtitle">
+                    Learning innovation at its best
+                </p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="screenshot-showcase">
+                        <img src="skybrary-app-of-day.png" alt="Skybrary App of the Day" style="max-width: 280px;">
+                        <img src="skybrary-desktop-1.png" alt="Skybrary Apps We Love" style="max-width: 45%;">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Apple App of the Day</span>
+                            <span class="project-tag">Apple Editors' Choice</span>
+                            <span class="project-tag">Apple Apps We Love</span>
+                            <span class="project-tag">React Native</span>
+                        </div>
+                        <h3>Skybrary Ebook App</h3>
+                        <p>Led complete rebuild of flagship digital reading platform for America's leading literacy nonprofit. 
+                        Delivered on-time, on-budget React Native solution with child-first UI and scalable architecture across 
+                        iOS/Android/Web/FireOS. Used high-altitude prioritization focusing on frictionless onboarding, reading-time 
+                        maximization, and discovery improvements.</p>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Earned Apple Editors' Choice and App of the Day within months of launch. Achieved 84% increase 
+                            in children reached, 59% increase in books read, 26% increase in reading YOY. Established North Star: 
+                            reach 25% of US Title I schools within 4 years.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Government Partnership</span>
+                            <span class="project-tag">International Ed</span>
+                            <span class="project-tag">120K+ Learners</span>
+                        </div>
+                        <h3>Award-Winning EdTech Platform</h3>
+                        <p>Led development of micro-credentialed and workforce-readiness products for The Frank Group, 
+                        adopted by university students and graduates across India, China, and Australia. Recognized 
+                        by Australian Financial Review (Top 4 nationally) and PIEoneer Awards (Top 2 globally) for learning impact.</p>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Scaled to 120,000+ learners across 450 enterprise and government clients. 
+                            Delivered 80%+ improvement in learner capability gains with 85%+ recommendation rates.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Semantic Search</span>
+                            <span class="project-tag">Personalization</span>
+                            <span class="project-tag">Modern UI</span>
+                        </div>
+                        <h3>AI first Digital Library</h3>
+                        <p>Leading AI-powered personalization initiative for 30,000+ content library to deliver superior 
+                        user experience. Implementing semantic search capabilities and intelligent recommendations to help 
+                        children and educators discover the perfect books for their reading level and interests.</p>
+                        <div class="project-impact">
+                            <strong>Impact:</strong> Transforming how millions of children discover and access literacy 
+                            content through AI-driven recommendations and modern, intuitive interface design. Enabling 
+                            personalized learning pathways at scale.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">My Journey</span>
+                <h2 class="section-title">From Lawyer to Software Developer to Product Leader</h2>
+                <p class="section-subtitle">
+                    Building products that reach millions of learners around the world
+                </p>
+            </div>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2024</div>
+                        <div>Present</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Director, Digital Products</h3>
+                        <div class="timeline-company">Reading Is Fundamental (RIF)</div>
+                        <ul>
+                            <li>Leading product and engineering for America's largest children's literacy nonprofit, impacting 24M+ children annually</li>
+                            <li>Managing department P&L across RIF's digital learning ecosystem</li>
+                            <li>Board-facing executive responsible for multi-year digital strategy and product innovation addressing the US literacy crisis</li>
+                            <li>Oversaw major rebuild of flagship digital reading platform earning Apple Editors' Choice and App of the Day consideration within months of launch</li>
+                            <li>Established North Star metric: reach 25% of US Title I schools within 4 years</li>
+                            <li>Grew team from 0 to 4 direct reports in product & engineering, implementing coaching frameworks and individualized growth plans</li>
+                            <li>Leading AI-powered personalization initiative for 30,000+ content library to deliver superior user experience</li>
+                            <li>Partnering with Harvard-affiliated research team on 2026 quasi-experimental study on family engagement</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2023</div>
+                        <div>2024</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Digital Product Manager</h3>
+                        <div class="timeline-company">Reading Is Fundamental (RIF)</div>
+                        <ul>
+                            <li>Delivered multiple state-wide adoptions of digital reading platform including data privacy negotiations (FERPA/COPPA)</li>
+                            <li>Achieved 84% increase in children reached, 59% increase in books read, and 26% increase in children reading YOY</li>
+                            <li>Established product analytics foundations across all digital properties (GA4/Looker Studio/AWS QuickSight)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2016</div>
+                        <div>2023</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Head of Product</h3>
+                        <div class="timeline-company">The Frank Group / franked.io (Award-Winning EdTech)</div>
+                        <ul>
+                            <li>Led end-to-end development of award-winning EdTech and workforce-readiness products adopted by universities, government, and enterprise including overseas markets in India and China</li>
+                            <li>Recognized by Australian Financial Review (Top 4 nationally) and PIEoneer Awards (Top 2 globally) for learning impact</li>
+                            <li>Scaled product suite to 120,000+ learners across 450 enterprise and government clients</li>
+                            <li>Delivered 80%+ improvement in learner capability gains in employability and job-readiness skills with 85%+ recommendation rates</li>
+                            <li>Led cross-functional team of content developers, facilitators, operations/support and engineers to deliver reporting, content and learning at scale</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2019</div>
+                        <div></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Academic Lecturer</h3>
+                        <div class="timeline-company">University of Sydney - Faculty of Engineering</div>
+                        <ul>
+                            <li>Developed and facilitated "Technical Innovation through New Ventures" curriculum for high-performing engineering students</li>
+                            <li>Taught design-thinking, lean start-ups, entrepreneurship, and prototyping methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2012</div>
+                        <div>2016</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Product Delivery Manager</h3>
+                        <div class="timeline-company">The Frank Group / franked.io</div>
+                        <ul>
+                            <li>Defined multi-year product strategy, go-to-market, and partnership pathways for government and higher-ed learning programs</li>
+                            <li>Built roadmaps aligned to funding cycles and student learning outcomes</li>
+                            <li>Established foundation for scaling products to government and enterprise clients</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2011</div>
+                        <div>2012</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Senior Associate</h3>
+                        <div class="timeline-company">Tierney Page Kirkland</div>
+                        <ul>
+                            <li>Served as independent facilitator for government and private sector infrastructure projects (up to $100M value)</li>
+                            <li>Delivered feasibility analysis, risk mitigation, strategy planning and stakeholder engagement</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <div class="year">2008</div>
+                        <div>2010</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Fundraising Coordinator</h3>
+                        <div class="timeline-company">Australian Cancer Research Foundation</div>
+                        <ul>
+                            <li>Increased fundraising revenue by 160% YOY using Salesforce CRM insights</li>
+                            <li>Built cross-functional relationships between medical researchers, health facilities and community stakeholders</li>
+                            <li>Supported organization that provided seed funding for world-renowned cervical cancer HPV vaccine</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Academic Background</span>
+                <h2 class="section-title">Education & Certifications</h2>
+                <p class="section-subtitle">
+                    From law to technology to product leadership
+                </p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">school</span></div>
+                    <h3>Bachelor of Laws (with Honors)</h3>
+                    <div class="education-institution">University of Sydney</div>
+                    <div class="education-year">Equivalent to U.S. Juris Doctor</div>
+                    <p>Comprehensive legal education providing foundation in analytical thinking, negotiation, and stakeholder management.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">auto_stories</span></div>
+                    <h3>Bachelor of Arts</h3>
+                    <div class="education-institution">University of Sydney</div>
+                    <p>Interdisciplinary studies developing critical thinking and communication skills.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">gavel</span></div>
+                    <h3>Graduate Diploma in Legal Practice</h3>
+                    <div class="education-institution">Australian National University</div>
+                    <p>Professional legal qualification for practice in Australia.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">code</span></div>
+                    <h3>Diploma in Information Technology</h3>
+                    <div class="education-institution">Coder Academy</div>
+                    <div class="education-year">Full Stack Developer • Women in Tech Scholar</div>
+                    <p>Intensive full-stack development program with placement at Vodafone Australia. Tech stack: JavaScript, NodeJS, ExpressJS, React, AWS S3.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">design_services</span></div>
+                    <h3>Design Thinking & Innovation</h3>
+                    <div class="education-institution">Stanford Center for Professional Development</div>
+                    <p>Hands-on training in design thinking tools and methodologies for product innovation.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon"><span class="material-icons">science</span></div>
+                    <h3>Lean Product Manager</h3>
+                    <div class="education-institution">Pollenizer Academy</div>
+                    <p>Product management frameworks for building and scaling technology products using lean startup methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Giving Back</span>
+                <h2 class="section-title">Community Leadership</h2>
+                <p class="section-subtitle">
+                    Using my platform to create opportunities and amplify voices
+                </p>
+            </div>
+            <div class="community-grid">
+                <div class="community-card">
+                    <div class="community-icon"><span class="material-icons">groups</span></div>
+                    <h3>President, Alumni Council</h3>
+                    <div class="community-org">University of Sydney (2017-2021)</div>
+                    <p>Led Alumni Council after 2 years as committee member. Worked with Alumni Relations team to grow 
+                    engagement across 350,000+ global alumni community. Advocated for student voice and participation 
+                    in university initiatives.</p>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon"><span class="material-icons">volunteer_activism</span></div>
+                    <h3>Teach Kids Sri Lanka</h3>
+                    <div class="community-org">100% Volunteer-Run</div>
+                    <p>Partnered with Salvation Army and software developers in Sri Lanka to run training program 
+                    for 12 underprivileged children aged 12-17, teaching computer literacy and employability skills. 
+                    Creating pathways to opportunity through education.</p>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon"><span class="material-icons">business_center</span></div>
+                    <h3>Founder, Young Entrepreneurs Meetup</h3>
+                    <div class="community-org">Sydney (2012-2016)</div>
+                    <p>Grew Young Entrepreneurs Group Sydney from inception to 4,000+ members. Created vibrant 
+                    community for SMEs, startups, and entrepreneurs to network, exchange ideas, and support each 
+                    other's growth. One of Australia's largest entrepreneurship communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Let's Connect</span>
+                <h2 class="section-title">Building something interesting?</h2>
+                <p class="section-subtitle">
+                    I'm always excited to talk about edtech, product strategy, literacy innovation, 
+                    or swap stories about solving real problems at scale.
+                </p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form" action="https://formspree.io/f/mjgewled" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="_replyto" placeholder="jane@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label for="subject">What's on your mind?</label>
+                        <input type="text" id="subject" name="_subject" placeholder="Partnership opportunity / Speaking engagement / Product collaboration" required>
+                    </div>
+                    <div class="form-group full">
+                        <label for="message">Tell me more</label>
+                        <textarea id="message" name="message" placeholder="I'd love to hear about what you're building, challenges you're facing, or ideas you're excited about..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message ✨</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/natashakhema/" target="_blank" class="social-link" title="LinkedIn">in</a>
+            </div>
+            <p>&copy; <span id="current-year">2026</span> Natasha Munasinghe. Built by vibe coding with Claude</p>
+        </div>
+    </footer>
+
+    <script>
+        // Auto-update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.philosophy-card, .timeline-item, .project-card, .community-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const speed = 0.1 + (index * 0.05);
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            lastScroll = scrolled;
+        });
+    </script>
+</body>
+</html>
